@@ -1,11 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import "./App.css";
 
+const sourceApi = 'https://lambda-github-api-server.herokuapp.com/';
+
 function App() {
 
+  const [nasaData, setNasaData] = useState();
+  
+
   useEffect(() => {
-    axios.get('https://lambda-github-api-server.herokuapp.com/')
+    axios.get(sourceApi)
       .then(response => {
         console.log(response)
       })
@@ -15,15 +20,21 @@ function App() {
   return (
     <div className="App">
       <div>
-        here goes the TITLE
+        <h1>here goes the TITLE</h1>
       </div>
       <div>
-        here goes the DATE
+        <h3>here goes the DATE</h3>
       </div>
-      <p>
-        Read through the instructions in the README.md file to build your NASA
-        app! Have fun!
-      </p>
+      <div>
+        here goes the IMG
+      </div>
+      <div>
+        <h2>Explanation</h2>
+        <p>
+          Read through the instructions in the README.md file to build your NASA
+          app! Have fun!
+        </p>
+      </div>
     </div>
   );
 }
