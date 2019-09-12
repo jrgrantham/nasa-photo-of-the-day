@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
+import Title from './Components/Title';
+import Date from './Components/Date';
+import Header from './Components/Header';
 import "./App.css";
 
 const sourceApi = 'https://lambda-github-api-server.herokuapp.com/';
@@ -29,13 +32,12 @@ function App() {
     return (
       <div className="App">
         <div>
-          <h1>{nasaData.title}</h1>
+          {/* <Header /> */}
         </div>
+          <Title title={nasaData.title} />
+          <Date date={nasaData.date} />
         <div>
-          <h3>{nasaData.date}</h3>
-        </div>
-        <div>
-          <img src={nasaData.hdurl} alt='view of space'></img>
+          {/* <img src={nasaData.hdurl} alt='view of space'></img> */}
         </div>
         <div>
           <h2>Explanation</h2>
