@@ -3,11 +3,14 @@ import styled from 'styled-components';
 
 const StyledDescription = styled.div`
     width: 80%;
-    margin: auto;
+    margin: 10px auto;
     text-align: justify;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 15px;
 `;
 
-const styledH2 = styled.h2`
+const StyledH2 = styled.h2`
     text-align: center;
 `;
 
@@ -15,7 +18,7 @@ function Description(props) {
     const {description} = props;
     return (
         <StyledDescription>
-            <styledH2>Description</styledH2>
+            <StyledH2>Description</StyledH2>
             <p>{description}</p>
         </StyledDescription>
     )
