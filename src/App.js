@@ -3,6 +3,8 @@ import axios from 'axios';
 import Title from './Components/Title';
 import Date from './Components/Date';
 import Header from './Components/Header';
+import Image from './Components/Image';
+import Description from './Components/Description';
 import "./App.css";
 
 const sourceApi = 'https://lambda-github-api-server.herokuapp.com/';
@@ -20,7 +22,7 @@ function App() {
         setNasaData(response.data);
       })
       .catch(error => {
-
+        
       })
     }
   , [])
@@ -31,24 +33,16 @@ function App() {
   if (nasaData) {
     return (
       <div className="App">
-        <div>
-          {/* <Header /> */}
-        </div>
+          <Header />
           <Title title={nasaData.title} />
           <Date date={nasaData.date} />
-        <div>
-          {/* <img src={nasaData.hdurl} alt='view of space'></img> */}
-        </div>
-        <div>
-          <h2>Explanation</h2>
-          <p>{nasaData.explanation}</p>
-        </div>
+          <Image src={nasaData.hdurl} />
+          <Description description={nasaData.explanation} />
       </div>
     );
     } else {
       return null;
     }
-
 }
 
 export default App;
