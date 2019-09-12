@@ -7,36 +7,46 @@ const sourceApi = 'https://lambda-github-api-server.herokuapp.com/';
 function App() {
 
   const [nasaData, setNasaData] = useState();
-  
 
   useEffect(() => {
     axios.get(sourceApi)
       .then(response => {
-        console.log(response)
+        // console.log(response);
+        // console.log(response.data);
+        // console.log(response.data.title)
+        setNasaData(response.data);
+      })
+      .catch(error => {
+
       })
     }
   , [])
 
-  return (
-    <div className="App">
-      <div>
-        <h1>here goes the TITLE</h1>
+  console.log(nasaData);
+  // console.log(nasaData.title);
+
+  if (nasaData) {
+    return (
+      <div className="App">
+        <div>
+          <h1>{nasaData.title}</h1>
+        </div>
+        <div>
+          <h3>{nasaData.date}</h3>
+        </div>
+        <div>
+          <img src={nasaData.hdurl} alt='view of space'></img>
+        </div>
+        <div>
+          <h2>Explanation</h2>
+          <p>{nasaData.explanation}</p>
+        </div>
       </div>
-      <div>
-        <h3>here goes the DATE</h3>
-      </div>
-      <div>
-        here goes the IMG
-      </div>
-      <div>
-        <h2>Explanation</h2>
-        <p>
-          Read through the instructions in the README.md file to build your NASA
-          app! Have fun!
-        </p>
-      </div>
-    </div>
-  );
+    );
+    } else {
+      return null;
+    }
+
 }
 
 export default App;
